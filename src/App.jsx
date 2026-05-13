@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Details from "./pages/details";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 import Gender from "./pages/gender";
 import Level from "./pages/level";
 import Welcome from "./pages/welcome";
-
-
+import GymTracker from "./pages/GymTracker";
+import PlateCalculator from "./pages/PlateCalculator";
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/gender" element={<Gender />} />
         <Route path="/level" element={<Level />} />
-        
+        <Route path="/gym-tracker" element={<GymTracker />} />
+        <Route path="/plate-calculator" element={<PlateCalculator />} />
       </Routes>
     </BrowserRouter>
   );
