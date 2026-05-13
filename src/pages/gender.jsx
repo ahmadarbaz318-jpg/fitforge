@@ -90,7 +90,11 @@ const Gender = () => {
           {/* Button */}
           <button
             disabled={!gender}
-            onClick={() => navigate("/level")}
+            onClick={() => {
+              const existing = JSON.parse(localStorage.getItem("user")) || {};
+              localStorage.setItem("user", JSON.stringify({ ...existing, gender }));
+              navigate("/level");
+            }}
             className="mt-8 w-full py-3 rounded-xl text-lg font-semibold 
             bg-gradient-to-r from-blue-500 to-cyan-400 
             shadow-lg shadow-blue-500/30

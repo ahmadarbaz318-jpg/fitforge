@@ -77,7 +77,11 @@ const Level = () => {
           {/* Button */}
           <button
             disabled={!level}
-            onClick={() => navigate("/dashboard")}
+            onClick={() => {
+              const existing = JSON.parse(localStorage.getItem("user")) || {};
+              localStorage.setItem("user", JSON.stringify({ ...existing, level }));
+              navigate("/dashboard");
+            }}
             className="mt-8 w-full py-3 rounded-xl text-lg font-semibold 
             bg-gradient-to-r from-blue-500 to-cyan-400 
             shadow-lg shadow-blue-500/30
