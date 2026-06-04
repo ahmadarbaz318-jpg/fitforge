@@ -30,15 +30,15 @@ const Welcome = () => {
       <motion.div
         animate={{ x: offset.x, y: offset.y, scale: 1.1 }}
         transition={{ type: "spring", stiffness: 50 }}
-        className="absolute inset-0 bg-cover bg-center blur-[3px]"
+        className="absolute inset-0 bg-cover bg-center blur-[1px]"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80')",
+            "url('/trainer-bg.png')",
         }}
       />
 
       {/* 🌑 DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/65" />
 
       {/* ✨ PARTICLES */}
       <div className="absolute inset-0 z-0 overflow-hidden">

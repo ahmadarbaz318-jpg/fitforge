@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
@@ -10,6 +11,12 @@ import GymTracker from "./pages/GymTracker";
 import PlateCalculator from "./pages/PlateCalculator";
 
 function App() {
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(savedTheme);
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

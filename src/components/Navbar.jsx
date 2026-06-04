@@ -1,10 +1,23 @@
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaDumbbell, FaCalculator, FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaDumbbell, FaCalculator, FaTachometerAlt, FaSignOutAlt, FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem("user")) || {};
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -61,6 +74,14 @@ const Navbar = () => {
             {user.level || "Member"}
           </span>
         </div>
+        <button
+          onClick={toggleTheme}
+          title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          className="p-2 rounded-xl bg-white/5 border border-white/10 text-gray-300
+            hover:bg-white/15 active:scale-95 transition duration-200 flex items-center justify-center cursor-pointer"
+        >
+          {theme === "dark" ? <FaSun className="text-yellow-400 w-4 h-4" /> : <FaMoon className="text-blue-500 w-4 h-4" />}
+        </button>
         <img
           src={`https://ui-avatars.com/api/?name=${user.name || "User"}&background=3b82f6&color=fff&rounded=true`}
           alt="profile"
